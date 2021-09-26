@@ -1,3 +1,6 @@
+LDLIBS=-lncursesw
+CFLAGS=-Wall -O3
+
 .PHONY: all clean
 
 all: Show
@@ -5,4 +8,4 @@ all: Show
 Show: Show.c
 
 clean:
-	echo "I do nothing"
+	rm -rf *.o Show
