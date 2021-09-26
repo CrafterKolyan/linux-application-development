@@ -1,0 +1,26 @@
+name: "Compilation"
+
+on:
+  push:
+  schedule:
+    # 1st and 15th days of each month at 4:30
+    - cron:  '30 4 1,15 * *'
+  workflow_dispatch:
+
+jobs:
+  03_terminalProject:
+    name: "03_TerminalProject"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout to workspace
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: apt install libncurses-dev
+
+    - name: Go to folder 03_TerminalProject
+      run: cd 03_TerminalProject
+
+    - name: Compile files using Make
+      run: make
