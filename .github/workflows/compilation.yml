@@ -23,4 +23,6 @@ jobs:
       run: cd 03_TerminalProject
 
     - name: Compile files using Make
-      run: make
+      run: |
+        ls
+        make
