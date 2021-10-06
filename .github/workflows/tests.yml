@@ -1,4 +1,4 @@
-name: "Compilation"
+name: "Tests"
 
 on:
   push:
@@ -21,3 +21,14 @@ jobs:
 
     - name: Compile files using Make
       run: make -C 02_TerminalProject
+  
+  makefile:
+    name: "03_Makefile"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout to workspace
+      uses: actions/checkout@v2
+
+    - name: Compile files using Make
+      run: make -C 03_Makefile
