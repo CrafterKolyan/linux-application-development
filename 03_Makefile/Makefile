@@ -21,16 +21,23 @@ prog-so: prog.o liboutput.so
 %_0.output: %
 	LD_LIBRARY_PATH=`pwd` ./$^ > $@ 2>&1
 
+%_1.output: %
+	LD_LIBRARY_PATH=`pwd` ./$^ param1 > $@ 2>&1
 
-test: prog_0.output prog-a_0.output prog-so_0.output
-	cmp prog_0.output prog-a_0.output
-	cmp prog_0.output prog-so_0.output
+%_3.output: %
+	LD_LIBRARY_PATH=`pwd` ./$^ Linux Application Development > $@ 2>&1
+
+test_%: prog_%.output prog-a_%.output prog-so_%.output
+	cmp prog_$*.output prog-a_$*.output
+	cmp prog_$*.output prog-so_$*.output
+
+test: test_0 test_1 test_3
 
 
 liboutput_static.a: fun.o const.o
-	ar -rcs $@ $^
+	ar -rcs $@ $?
 
-liboutput.so: fun.o const.o
+liboutput.so: fun.o const.o 
 	cc $^ --shared -o $@
 
 
