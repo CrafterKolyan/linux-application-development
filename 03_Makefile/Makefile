@@ -3,7 +3,7 @@ SOURCES = $(wildcard *.c)
 TRASH = $(SOURCES:.c=.o) *.output
 CFLAGS += -fPIC
 
-.PHONY: all clean distclean test
+.PHONY: all clean test
 
 all: test
 
