@@ -1,5 +1,8 @@
-prog: const.c fun.c prog.c
-	cc const.c fun.c prog.c -o prog
+prog: const.o fun.o prog.o
+	cc $^ -o prog
+
+%.o: %.c
+	cc $^ -c -o $@
 
 clean:
-	rm -f prog
+	rm -f prog *.o
