@@ -23,7 +23,7 @@ jobs:
       run: make -C 02_TerminalProject
   
   makefile:
-    name: "03_Makefile"
+    name: "03_Multifile"
     runs-on: ubuntu-latest
     
     steps:
@@ -31,4 +31,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Compile files using Make
-      run: make -C 03_Makefile
+      run: make -C 03_Multifile
