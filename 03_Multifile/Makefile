@@ -19,7 +19,7 @@ prog-so: prog.o liboutput.so
 
 
 %_0.output: %
-	LD_LIBRARY_PATH=`pwd` ./$^ > $@ 2>&1
+	LD_LIBRARY_PATH=`pwd` ./$^ > $@ 2>/dev/null
 
 %_1.output: %
 	LD_LIBRARY_PATH=`pwd` ./$^ param1 > $@ 2>&1
