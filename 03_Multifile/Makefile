@@ -19,13 +19,13 @@ prog-so: prog.o liboutput.so
 
 
 %_0.output: %
-	LD_LIBRARY_PATH=`pwd` ./$^ > $@ 2>/dev/null
+	LD_LIBRARY_PATH=`pwd` /bin/bash -c "(exec -a prog ./$^)" > $@ 2>&1
 
 %_1.output: %
-	LD_LIBRARY_PATH=`pwd` ./$^ param1 > $@ 2>&1
+	LD_LIBRARY_PATH=`pwd` /bin/bash -c "(exec -a prog ./$^ param1)" > $@ 2>&1
 
 %_3.output: %
-	LD_LIBRARY_PATH=`pwd` ./$^ Linux Application Development > $@ 2>&1
+	LD_LIBRARY_PATH=`pwd` /bin/bash -c "(exec -a prog ./$^ Linux Application Development)" > $@ 2>&1
 
 test_%: prog_%.output prog-a_%.output prog-so_%.output
 	cmp prog_$*.output prog-a_$*.output
